@@ -15,7 +15,7 @@ const Column = ({
 		e.dataTransfer.setData('cardId', card.id);
 	};
 
-	const getIndicators = () => {
+	const getIndicators = (): HTMLElement[] => {
 		return Array.from(
 			document.querySelectorAll(`
 		[data-column="${column}"]
@@ -25,7 +25,7 @@ const Column = ({
 
 	const getNearestIndicator = (
 		e: DragEvent<HTMLDivElement>,
-		indicators: Element[],
+		indicators: HTMLElement[],
 	) => {
 		const DISTANCE_OFFSET = 50;
 		const el = indicators.reduce(
@@ -48,7 +48,7 @@ const Column = ({
 		return el;
 	};
 
-	const clearHighlights = (els?: Element[]) => {
+	const clearHighlights = (els?: HTMLElement[]) => {
 		const indicators = els ?? getIndicators();
 		indicators.forEach(i => {
 			i.style.opacity = '0';
